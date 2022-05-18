@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Login - Asset Management</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="static/signin.css">
+    </head>
+
+    <body class="text-center">
+        <form class="form-signin" action="/validate_login" method="POST">
+            <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Atos_Origin_2011_logo.svg/1200px-Atos_Origin_2011_logo.svg.png" alt="" width="200" height="72">
+
+            <h1 class="mb-3 font-weight-normal">Please sign in</h1>
+
+            {% if error %}
+            <p style="color: red;"><b>{{ error }}</b></p>
+            {% endif %}
+
+            <label for="inputName" class="sr-only">User name</label>
+            <input class="form-control" type="text" id="inputName" name="inputName" placeholder="User name..." required>
+            <br>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input class="form-control" type="password" id="inputPassword" name="inputPassword" placeholder="Password..." required>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+            <hr>
+
+            <p class="mt-5 mb-3 text-muted">© 2022</p>
+        </form>
+    </body>
+</html>
