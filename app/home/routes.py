@@ -61,12 +61,17 @@ def handle_register():
 
     engine = create_engine(os.environ.get('DATABASE_URL'))
     sql = text("INSERT INTO user (name, team, level, active, pass_hash) VALUES (:n, :t, :l, :a, :p)")
-    sql2 = text("SELECT name FROM user")
+    sql2 = text("SELECT * FROM user")
     result2 = engine.execute(sql2).fetchall()
     
     for record in result2:
-        if name in record[0]:
-            return redirect(url_for('home.create_user', error="User already exists!"))    
+        if name in record[1]:
+            return redirect(url_for('home.create_user', error="User already exists!"))
+    
+    if not level == 1 or not level == 2:
+        return redirect(url_for('home.create_user', error="Level can be 1 or 2!"))
+    if not active == 0 or not active == 1:
+        return redirect(url_for('home.create_user', error="Active can be 0 or 1!"))
 
     try:
         engine.execute(sql, n=name, t=team, l=level, a=active, p=password)
@@ -146,11 +151,11 @@ def handle_create_event():
 
     engine = create_engine(os.environ.get('DATABASE_URL'))
     sql = text("INSERT INTO event (name, description, prio) VALUES (:n, :d, :p)")
-    sql2 = text("SELECT name FROM event")
+    sql2 = text("SELECT * FROM event")
     result2 = engine.execute(sql2).fetchall()
     
     for record in result2:
-        if name in record[0]:
+        if name in record[1]:
             return redirect(url_for('home.insert_event', error="Event already exists!"))
     try:
         engine.execute(sql, n=name, d=description, p=priority)
