@@ -16,6 +16,10 @@
       <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Atos_Origin_2011_logo.svg/1200px-Atos_Origin_2011_logo.svg.png" alt="" width="200" height="72">
  
       <h1 class="h3 mb-3 font-weight-normal">Remove a User</h1>
+
+      {% if error %}
+      <p style="color: red;"><b>{{ error }}</b></p>
+      {% endif %}
  
       <div class="input-group mb-3">
         <div class="input-group-prepend">

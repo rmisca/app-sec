@@ -67,11 +67,11 @@ def handle_register():
     for record in result2:
         if name in record[1]:
             return redirect(url_for('home.create_user', error="User already exists!"))
-    
-    if not level == 1 or not level == 2:
+
+    if int(level) !=1 or int(level) !=2:
         return redirect(url_for('home.create_user', error="Level can be 1 or 2!"))
-    if not active == 0 or not active == 1:
-        return redirect(url_for('home.create_user', error="Active can be 0 or 1!"))
+    if int(active) != 0 or int(active) != 1:
+        return redirect(url_for('home.create_user', error="Status can be 0 or 1!"))
 
     try:
         engine.execute(sql, n=name, t=team, l=level, a=active, p=password)
@@ -86,6 +86,8 @@ def delete_user():
     if "nameInput" in request.form:
         name = request.form["nameInput"]
         sql = text("DELETE FROM user WHERE name = '"+ name +"'")
+        if 'admin' in name:
+            return redirect(url_for('home.delete_user', error="You can't delete yourself!"))
         try:
             engine.execute(sql)
         except ValueError:
@@ -95,7 +97,10 @@ def delete_user():
     else:
         sql = text("SELECT name FROM user")
         result = engine.execute(sql).fetchall()
-        return render_template('home/delete_user.html', users=result)
+        if "error" in request.args:
+            return render_template('home/delete_user.html', users=result, error=request.args["error"])
+        else:
+            return render_template('home/delete_user.html', users=result)
 
 @home.route('/update_user')
 def update_user():
