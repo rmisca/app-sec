@@ -17,7 +17,7 @@
         Assets Manager
       </a>
  
-      <div style="color:white;">Hello, {{email}}!</div>
+      <div style="color:white;">Hello, {{name}}!</div>
       <div><a href="/logout"> <button type="button" class="btn btn-info">Log Out</button> </a></div>
     </nav>
  
@@ -32,15 +32,15 @@
           </tr>
         </thead>
         <tbody>
-          {% for item in assets %}
+          {% for item in events %}
+          {% if item[3] == 3 %}
           <tr>
             <td> {{ item[0] }} </td>
             <td> {{ item[1] }} </td>
-            <td> {{ item[2] }} </td>
-            {% if item[3] == 3 %} 
-                <td> {{item[3]}} </td>
-            {% endif %}
+            <td> {{ item[2] }} </td> 
+            <td> {{item[3]}} </td>
           </tr>
+          {% endif %}
           {% endfor %}
         </tbody>
       </table>

@@ -1,0 +1,42 @@
+<html lang="en">
+    <head>
+ 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+    crossorigin="anonymous">
+ 
+    <title>Delete user</title>
+ 
+    <!-- Custom styles for this template -->
+    <link href="static/signin.css" rel="stylesheet">
+  </head>
+ 
+  <body class="text-center">
+    <form class="form-signin" action="/delete_user" method="post">
+      <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Atos_Origin_2011_logo.svg/1200px-Atos_Origin_2011_logo.svg.png" alt="" width="200" height="72">
+ 
+      <h1 class="h3 mb-3 font-weight-normal">Remove a User</h1>
+ 
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">User Name</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" name="nameInput">
+          <option selected>Choose...</option>
+          {% for item in users %}
+            <option value={{ item[0] }}>{{ item[0] }}</option>
+          {% endfor %}
+        </select>
+      </div>
+ 
+      <hr>
+ 
+      <button class="btn btn-lg btn-danger btn-block" type="submit">Delete User</button>
+ 
+      <hr>
+ 
+      <p class="mt-5 mb-3 text-muted">© 2022</p>
+    </form>
+ 
+</body>
+</html>

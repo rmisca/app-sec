@@ -1,0 +1,45 @@
+<html lang="en"><head>
+ 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+    crossorigin="anonymous">
+ 
+    <title>Update user</title>
+ 
+    <!-- Custom styles for this template -->
+    <link href="static/signin.css" rel="stylesheet">
+  </head>
+ 
+  <body class="text-center">
+    <form class="form-signin" action="/handle_update_user" method="post">
+      <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Atos_Origin_2011_logo.svg/1200px-Atos_Origin_2011_logo.svg.png" alt="" width="200" height="72">
+ 
+      <h1 class="h3 mb-3 font-weight-normal">Update a user</h1>
+
+      {% if error %}
+      <p style="color: red;"><b>{{ error }}</b></p>
+      {% endif %}
+ 
+      <label for="inputName" class="sr-only">User name</label>
+      <input type="text" name="inputName" id="inputName" class="form-control" placeholder="User name" required="" autofocus="">
+      <br>
+      <label for="inputTeam" class="sr-only">Team</label>
+      <input type="text" name="inputTeam" id="inputTeam" class="form-control" placeholder="Team" required="" autofocus="">      
+      <br>
+      <label for="inputLevel" class="sr-only">Level</label>
+      <input type="text" name="inputLevel" id="inputLevel" class="form-control" placeholder="Level" required="" autofocus="">      
+      <br>
+      <label for="inputActive" class="sr-only">Active</label>
+      <input type="text" name="inputActive" id="inputActive" class="form-control" placeholder="Active" required="" autofocus="">      
+      <br>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required="">
+ 
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Update the user</button>
+ 
+      <hr>
+ 
+      <p class="mt-5 mb-3 text-muted">© 2022</p>
+    </form>
+ 
+</body></html>
