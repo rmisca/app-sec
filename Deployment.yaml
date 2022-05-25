@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appsec
+  labels:
+    app: appsec
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: appsec
+  template:
+    metadata:
+      labels:
+        app: appsec
+    spec:
+      containers:
+      - name: appsec
+        image: appsec:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: appsec-service
+spec:
+  type: NodePort
+  selector:
+    app: appsec
+  ports:
+  - port: 5000
+    targetPort: 5000
+
