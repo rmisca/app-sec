@@ -1,4 +1,4 @@
-FROM python:3.10.4-slim-buster
+FROM python:3.12.0a3-slim-buster
 
 WORKDIR /sec_app
 
